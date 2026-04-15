@@ -211,7 +211,13 @@ export function HeroStage({ profile, lines, educations }) {
           />
         </div>
       </aside>
+
+      <div className="hero-scroll-cue" aria-hidden="true">
+        <span />
+        <span />
+      </div>
     </section>
   );
 }
+
 

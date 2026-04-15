@@ -124,16 +124,16 @@ function App() {
     const ctx = gsap.context(() => {
       const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
       intro
-        .from(".brand-mark", { opacity: 0, y: -16, duration: 0.5 })
-        .from(".hero-title-word", { opacity: 0, yPercent: 100, stagger: 0.08, duration: 0.85 }, "<0.12")
-        .from(".hero-stage-media", { opacity: 0, y: 28, duration: 0.78 }, "<0.08")
+        .from(".brand-mark", { opacity: 0, y: -16, duration: 0.64 })
+        .from(".hero-title-word", { opacity: 0, yPercent: 100, stagger: 0.14, duration: 1.2 }, "<0.16")
+        .from(".hero-stage-media", { opacity: 0, y: 28, duration: 0.95 }, "<0.1")
         .from(".hero-quote-line", {
           clipPath: "inset(0 100% 0 0)",
           opacity: 0,
-          duration: 0.82,
-          stagger: 0.15,
+          duration: 1.26,
+          stagger: 0.26,
           ease: "power2.out"
-        }, "<0.22");
+        }, "<0.26");
 
       gsap.utils.toArray(".reveal-section:not(.no-reveal)").forEach((section) => {
         gsap.from(section, {
@@ -256,3 +256,4 @@ function App() {
 }
 
 export default App;
+
