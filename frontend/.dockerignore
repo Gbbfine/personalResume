@@ -1,0 +1,6 @@
+public
+temp_config_dump.txt
+site/node_modules
+site/.npm-cache
+site/.pw-browsers
+site/test-results

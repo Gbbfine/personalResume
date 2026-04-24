@@ -225,3 +225,55 @@ npx http-server . -p 63342
 - 后端允许的本地跨域来源已包含 `5500` 和 `63342`
 
 如果你完全按这个 README 执行，正常情况下可以一次跑通。
+
+---
+
+## 13. Docker 一键启动（Ubuntu 推荐）
+
+如果你已经安装了 Docker Engine + Docker Compose 插件，可以直接用这一组命令启动全部服务（MySQL + 后端 + 前端）：
+
+```bash
+cd /你的项目路径/PersonalResume
+# 可选：先自定义密码和密钥
+cp .env.example .env
+docker compose up -d --build
+```
+
+启动成功后访问：
+
+- 前台首页：`http://localhost:5500/public/index.html`
+- 后台登录：`http://localhost:5500/admin/login.html`
+- 后端接口：`http://localhost:8080/api/public/profile`
+
+默认管理员账号：
+
+- 用户名：`admin`
+- 密码：`admin123`
+
+常用 Docker 命令：
+
+```bash
+# 查看服务状态
+docker compose ps
+
+# 查看实时日志
+docker compose logs -f
+
+# 停止并删除容器（保留数据库数据卷）
+docker compose down
+
+# 停止并删除容器 + 删除数据库数据卷（会清空数据）
+docker compose down -v
+```
+
+说明：
+
+- 第一次启动会自动执行 `database/schema.sql` 和 `database/seed.sql` 初始化数据库。
+- 数据库存储在 `mysql_data` 卷中，除非执行 `docker compose down -v`，否则数据会保留。
+- 若想修改 MySQL root 密码和 JWT 密钥，可修改项目根目录下的 `.env` 文件（可由 `.env.example` 复制得到）。
+- 如果你不想用 `.env` 文件，也可以先设置环境变量再启动：
+
+```bash
+export MYSQL_ROOT_PASSWORD=你的新密码
+docker compose up -d --build
+```
