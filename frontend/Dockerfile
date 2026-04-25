@@ -1,13 +1,17 @@
-FROM node:20-alpine AS build
+ARG NODE_IMAGE=node:20-alpine
+ARG NGINX_IMAGE=nginx:1.27-alpine
+ARG NPM_REGISTRY=https://registry.npmmirror.com
+
+FROM ${NODE_IMAGE} AS build
 WORKDIR /workspace/site
 
 COPY site/package.json site/package-lock.json ./
-RUN npm ci
+RUN npm ci --registry=${NPM_REGISTRY}
 
 COPY site ./
 RUN npm run build
 
-FROM nginx:1.27-alpine
+FROM ${NGINX_IMAGE}
 WORKDIR /usr/share/nginx/html
 
 RUN rm -rf ./*
