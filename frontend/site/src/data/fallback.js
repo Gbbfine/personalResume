@@ -1,6 +1,6 @@
 ﻿export const fallbackResume = {
   profile: {
-    fullName: "YOUR NAME",
+    fullName: "葛宝斌",
     title: "Full-Stack Developer",
     avatarUrl: "https://raw.githubusercontent.com/Gbbfine/PersonalFileHosting/main/avatar.webp",
     location: "Shanghai, China",

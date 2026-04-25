@@ -2,12 +2,12 @@
 import { ArrowUpRight, Download } from "lucide-react";
 import { safe } from "../lib/format";
 
-const WHUT_LOGO_URL = "./whut-logo.svg";
+const WHUT_LOGO_URL = "./whut-logo.webp";
 const LOCAL_AVATAR_URL = "./avatar.webp";
 const GITHUB_URL = "https://github.com/Gbbfine";
 
 function splitName(fullName) {
-  const value = safe(fullName, "YOUR NAME");
+  const value = safe(fullName, "葛宝斌");
   return value.split(/\s+/).filter(Boolean);
 }
 

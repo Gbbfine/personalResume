@@ -9,7 +9,7 @@ INSERT INTO profile (
     resume_pdf_url,
     is_active
 ) VALUES (
-    'Your Name',
+    '葛宝斌',
     'Java Backend Developer',
     'https://raw.githubusercontent.com/Gbbfine/PersonalFileHosting/main/avatar.webp',
     'China',
