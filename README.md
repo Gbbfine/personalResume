@@ -232,6 +232,25 @@ npx http-server . -p 63342
 
 如果你已经安装了 Docker Engine + Docker Compose 插件，可以直接用这一组命令启动全部服务（MySQL + 后端 + 前端）：
 
+### 13.1 先在本地打包后端 Jar
+
+为了让服务器构建更快，后端不在服务器里下载 Maven 依赖和编译代码。先在本地执行：
+
+```powershell
+cd C:\Study\Project\PersonalResume\backend
+mvn -s maven-settings.xml -DskipTests package
+```
+
+执行成功后会生成：
+
+```text
+backend/target/resume-backend-1.0.0.jar
+```
+
+把项目上传到服务器时，记得一起上传 `backend/target/resume-backend-1.0.0.jar`。如果服务器是通过 `git pull` 更新代码，因为 `target/` 不进 Git，需要单独上传这个 Jar 文件。
+
+### 13.2 在服务器启动 Docker
+
 ```bash
 cd /你的项目路径/PersonalResume
 # 可选：先自定义密码和密钥
