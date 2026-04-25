@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: ${MYSQL_IMAGE:-registry.cn-hangzhou.aliyuncs.com/library/mysql:8.0}
+    image: mysql:8.0
     container_name: personal-resume-mysql
     command:
       - --character-set-server=utf8mb4
@@ -26,9 +26,6 @@ services:
   backend:
     build:
       context: ./backend
-      args:
-        MAVEN_IMAGE: ${MAVEN_IMAGE:-registry.cn-hangzhou.aliyuncs.com/library/maven:3.9.9-eclipse-temurin-17}
-        JRE_IMAGE: ${JRE_IMAGE:-registry.cn-hangzhou.aliyuncs.com/library/eclipse-temurin:17-jre}
     container_name: personal-resume-backend
     environment:
       DB_URL: jdbc:mysql://mysql:3306/personal_resume?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
@@ -47,10 +44,6 @@ services:
   frontend:
     build:
       context: ./frontend
-      args:
-        NODE_IMAGE: ${NODE_IMAGE:-registry.cn-hangzhou.aliyuncs.com/library/node:20-alpine}
-        NGINX_IMAGE: ${NGINX_IMAGE:-registry.cn-hangzhou.aliyuncs.com/library/nginx:1.27-alpine}
-        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmmirror.com}
     container_name: personal-resume-frontend
     ports:
       - "80:80"
